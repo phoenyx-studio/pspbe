@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>aspnet-pspbe-33D28B8A-F3E0-4FAF-8221-0CC89451D7B7</UserSecretsId>
+    <UserSecretsId>aspnet-pspbe-837A804C-2167-4661-B038-07F3AB769F16</UserSecretsId>
   </PropertyGroup>
 
 
@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0-rc1.final" />
   </ItemGroup>
 
 </Project>
