@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ps1906_pspbe.Models;
+using pspbe.Models;
 
-namespace ps1906_pspbe.Controllers
+namespace pspbe.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ps1906_pspbe.Data.Migrations
+namespace pspbe.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

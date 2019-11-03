@@ -1,6 +1,6 @@
 using System;
 
-namespace ps1906_pspbe.Models
+namespace pspbe.Models
 {
     public class ErrorViewModel
     {
