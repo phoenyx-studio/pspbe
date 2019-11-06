@@ -33,6 +33,8 @@ namespace pspbe
                     Configuration.GetConnectionString("MySqlConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<BlogDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
             services.AddControllersWithViews();
            services.AddRazorPages();
         }

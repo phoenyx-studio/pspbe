@@ -4,7 +4,13 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Crud for Post categories
+CRUD for Blog Posts
+
+## 2019-11-06
+
+Blog DB Context
+Models for Post Category and Post
+CRUD for Post categories
 
 ## 2019-11-03
 
