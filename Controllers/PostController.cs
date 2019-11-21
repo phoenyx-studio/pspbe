@@ -10,22 +10,23 @@ using pspbe.Models;
 
 namespace pspbe.Controllers
 {
-    public class CategoriesController : Controller
+    public class PostController : Controller
     {
         private readonly BlogDbContext _context;
 
-        public CategoriesController(BlogDbContext context)
+        public PostController(BlogDbContext context)
         {
             _context = context;
         }
 
-        // GET: Categories
+        // GET: Post
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            var blogDbContext = _context.Posts.Include(p => p.Category);
+            return View(await blogDbContext.ToListAsync());
         }
 
-        // GET: Categories/Details/5
+        // GET: Post/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,42 @@ namespace pspbe.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var post = await _context.Posts
+                .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (post == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(post);
         }
 
-        // GET: Categories/Create
+        // GET: Post/Create
         public IActionResult Create()
         {
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
             return View();
         }
 
-        // POST: Categories/Create
+        // POST: Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Title,Content,Created,Updated,CategoryId")] Post post)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
+                _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
+            return View(post);
         }
 
-        // GET: Categories/Edit/5
+        // GET: Post/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +77,23 @@ namespace pspbe.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null)
             {
                 return NotFound();
             }
-            return View(category);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
+            return View(post);
         }
 
-        // POST: Categories/Edit/5
+        // POST: Post/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,Created,Updated,CategoryId")] Post post)
         {
-            if (id != category.Id)
+            if (id != post.Id)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace pspbe.Controllers
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(post);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.Id))
+                    if (!PostExists(post.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +118,11 @@ namespace pspbe.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", post.CategoryId);
+            return View(post);
         }
 
-        // GET: Categories/Delete/5
+        // GET: Post/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +130,31 @@ namespace pspbe.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Categories
+            var post = await _context.Posts
+                .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
+            if (post == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(post);
         }
 
-        // POST: Categories/Delete/5
+        // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            _context.Categories.Remove(category);
+            var post = await _context.Posts.FindAsync(id);
+            _context.Posts.Remove(post);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
+        private bool PostExists(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            return _context.Posts.Any(e => e.Id == id);
         }
     }
 }
