@@ -4,8 +4,6 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Field Category in Post model references to Category object, however is displayed as CategoryId (integer). Need to change this behavior
-
 Create and Update fields in both models are displayed as text. Need to format display.
 
 Automatic fill fields Create and Update on save and (or) edit entities
@@ -15,6 +13,10 @@ Need to add authorization for both controllers
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2019-11-27
+
+Change CategoryId to CategoryTitle on pages of PostController
 
 ## 2019-11-21
 
