@@ -4,8 +4,6 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Create and Update fields in both models are displayed as text. Need to format display.
-
 Automatic fill fields Create and Update on save and (or) edit entities
 
 Need to add authorization for both controllers
@@ -13,6 +11,10 @@ Need to add authorization for both controllers
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2019-12-21
+
+Applied display format for Create and Update fields in both models.
 
 ## 2019-11-27
 
