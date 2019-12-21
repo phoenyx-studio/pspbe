@@ -54,8 +54,10 @@ namespace pspbe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Created,Updated")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Title")] Category category)
         {
+            category.Created = DateTime.Now;
+            category.Updated = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _context.Add(category);
@@ -86,18 +88,26 @@ namespace pspbe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Created,Updated")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title")] Category category)
         {
             if (id != category.Id)
             {
                 return NotFound();
             }
 
+            var oldCategory = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            oldCategory.Updated = DateTime.Now;
+            oldCategory.Title = category.Title;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(oldCategory);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

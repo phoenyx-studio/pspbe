@@ -4,13 +4,15 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Automatic fill fields Create and Update on save and (or) edit entities
-
 Need to add authorization for both controllers
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2019-12-22
+
+Update and Create fields of both Post and Category are automaticaly filled with DateTime.Now on creation of the entity. On edit field Create remain the same, Update is filled with DateTime.Now
 
 ## 2019-12-21
 
