@@ -38,6 +38,12 @@ namespace pspbe
                 options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
             services.AddControllersWithViews();
            services.AddRazorPages();
+           services.AddAuthorization(options=>
+           {
+                options.AddPolicy("isRoot", policy => 
+                    policy.RequireRole("root")
+                );
+           });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
