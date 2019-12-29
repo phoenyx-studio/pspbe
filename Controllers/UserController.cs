@@ -6,7 +6,7 @@ using pspbe.Data;
 
 namespace pspbe.Controllers
 {
-    //[Authorize(Roles = "root")]
+    [Authorize(Roles = "root")]
     public class UserController : Controller
     {
         UserManager<IdentityUser> _userManager;
