@@ -6,6 +6,10 @@ This document contains changes of the project in reverse chronological order
 
 Need to add authorization for both controllers
 
+Use bootstrap layout for Post and Category controllers
+
+Init controller for the situation when there is no root at the system
+
 Develop front page
 
 Wysiwyg-editor for post editing

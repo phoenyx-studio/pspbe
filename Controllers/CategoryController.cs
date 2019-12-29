@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using pspbe.Data;
 using pspbe.Models;
 
 namespace pspbe.Controllers
 {
+    [Authorize(Roles="admin")]
     public class CategoryController : Controller
     {
         private readonly BlogDbContext _context;

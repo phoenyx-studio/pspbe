@@ -1,0 +1,32 @@
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "Users List";
+}
+
+<div>
+    <h1 class="display-4">Users</h1>
+    <ul style="list-style-type:none">
+        @foreach (var user in Model)
+        {
+            <li>
+                <div class="user-info">
+                    <div class="user-name">User Name - @user.UserName</div>
+                    <div class="user-normalized-user-name">Normalized name - @user.NormalizedUserName</div>
+                    <div class="user-email">User Email - @user.Email</div>
+                    <div class="user-normalized-email">Normalized Email - @user.NormalizedEmail</div>
+                    <div class="user-id">User Id - @user.Id</div>
+                    <div class="user-email-confirmed">User email confirmed - @user.EmailConfirmed</div>
+                    <div class="user-lockout-enabled">User lockout enabled - @user.LockoutEnabled</div>
+                    <div class="user-lockout-end">User lockout end - @user.LockoutEnd</div>
+                    <div class="user-password-hash">User password hash - @user.PasswordHash</div>
+                    <div class="user-phone-number">User phone number - @user.PhoneNumber</div>
+                    <div class="user-phone-number-confirmed">User phone number confirmed - @user.PhoneNumberConfirmed</div>
+                    <div class="user-security-Stamp">User security stamp - @user.SecurityStamp</div>
+                </div>
+                <hr>
+            </li>
+        }
+    
+    </ul>
+    
+</div>
