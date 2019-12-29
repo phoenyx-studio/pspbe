@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using pspbe.Data;
 
 namespace pspbe.Controllers
 {
+    [Authorize(Roles = "root")]
 public class RoleController : Controller
 {
     RoleManager<IdentityRole> _roleManager;

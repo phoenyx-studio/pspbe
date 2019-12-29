@@ -4,15 +4,19 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Need to add authorization for both controllers
+Policies to check if the user is root or admin (issue #6)
 
 Use bootstrap layout for Post and Category controllers
-
-Init controller for the situation when there is no root at the system
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2019-12-29
+
+Added authorization for Post and Category controllers - allowed only for admins. Access to Role and User controllers is allowed only for users in the role of root.
+
+Added Init controller for the situations when the application is deployed with empty database. Resolves issue #7
 
 ## 2019-12-22
 
