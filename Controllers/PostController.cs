@@ -11,6 +11,7 @@ using pspbe.Models;
 
 namespace pspbe.Controllers
 {
+    [Authorize(Roles="admin")]
     public class PostController : Controller
     {
         private readonly BlogDbContext _context;
