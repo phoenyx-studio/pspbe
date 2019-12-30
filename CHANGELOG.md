@@ -4,13 +4,17 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Policies to check if the user is root or admin (issue #6)
-
-Use bootstrap layout for Post and Category controllers
+Change input type for post content from text to textarea
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2019-12-30
+
+Policies to check if the user is root or admin (issue #6)
+
+Use bootstrap layout for Post and Category controllers (issue #10)
 
 ## 2019-12-29
 
