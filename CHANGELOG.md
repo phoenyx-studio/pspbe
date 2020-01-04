@@ -4,11 +4,15 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Change input type for post content from text to textarea
+
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2020-01-04
+
+Change input type for post content from text to textarea on create and edit pages
 
 ## 2019-12-30
 
