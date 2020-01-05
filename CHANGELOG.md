@@ -4,11 +4,21 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Change input type for post content from text to textarea
+Form input controls are too narrow #12
+
+Make views be able to render HTML in post content #13
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2020-01-05
+
+Remove post content from the view of the list of the posts #14
+
+## 2020-01-04
+
+Change input type for post content from text to textarea on create and edit pages
 
 ## 2019-12-30
 
