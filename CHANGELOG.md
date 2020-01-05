@@ -4,8 +4,6 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Remove post content from the view of the list of the posts #14
-
 Form input controls are too narrow #12
 
 Make views be able to render HTML in post content #13
@@ -13,6 +11,10 @@ Make views be able to render HTML in post content #13
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2020-01-05
+
+Remove post content from the view of the list of the posts #14
 
 ## 2020-01-04
 
