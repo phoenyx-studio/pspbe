@@ -4,13 +4,17 @@ This document contains changes of the project in reverse chronological order
 
 ## upcoming
 
-Form input controls are too narrow #12
-
-Make views be able to render HTML in post content #13
+Document process of the application initial deployment
 
 Develop front page
 
 Wysiwyg-editor for post editing
+
+## 2020-03-15
+
+Make views be able to render HTML in post content #13
+
+Form input controls are too narrow #12
 
 ## 2020-01-05
 
