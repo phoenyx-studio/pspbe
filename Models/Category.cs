@@ -8,6 +8,7 @@ namespace pspbe.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Slug { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime Created { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
