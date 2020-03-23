@@ -70,9 +70,14 @@ namespace pspbe
 
             app.UseEndpoints(endpoints =>
             {
+                // endpoints.MapControllerRoute(
+                //     name: "bySlug", 
+                //     pattern: "post/{slug}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

@@ -49,6 +49,21 @@ namespace pspbe.Controllers
 
             return View(post);
         }
+        [Route("Post/{slug}")]
+
+        // GET: Post/human-readable-name
+        public async Task<IActionResult> Show(string slug)
+        {
+            var post = await _context.Posts
+                .Include(p => p.Category)
+                .FirstOrDefaultAsync(m => m.Slug == slug);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", post);
+        }
 
         // GET: Post/Create
         public IActionResult Create()
