@@ -49,9 +49,10 @@ namespace pspbe.Controllers
 
             return View(post);
         }
-        [Route("Post/{slug}")]
 
         // GET: Post/human-readable-name
+        [Route("Post/{slug}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Show(string slug)
         {
             var post = await _context.Posts

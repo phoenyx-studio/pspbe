@@ -48,6 +48,22 @@ namespace pspbe.Controllers
             return View(category);
         }
 
+        // GET: Category/human-readable-name
+        [Route("Category/{slug}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Show(string slug)
+        {
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(m => m.Slug == slug);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", category);
+        }
+
         // GET: Category/Create
         public IActionResult Create()
         {
