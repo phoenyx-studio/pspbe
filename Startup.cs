@@ -12,6 +12,7 @@ using pspbe.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using pspbe.Service;
 using Pomelo.EntityFrameworkCore.MySql;
 
 namespace pspbe
@@ -42,6 +43,7 @@ namespace pspbe
                 options.AddPolicy("isRoot", policy => policy.RequireRole("root"));
                 options.AddPolicy("isAdmin", policy => policy.RequireRole("admin"));
             });
+            services.AddSlugger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,9 +70,14 @@ namespace pspbe
 
             app.UseEndpoints(endpoints =>
             {
+                // endpoints.MapControllerRoute(
+                //     name: "bySlug", 
+                //     pattern: "post/{slug}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

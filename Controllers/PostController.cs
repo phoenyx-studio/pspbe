@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using pspbe.Data;
 using pspbe.Models;
+using pspbe.Service;
 
 namespace pspbe.Controllers
 {
@@ -15,10 +16,12 @@ namespace pspbe.Controllers
     public class PostController : Controller
     {
         private readonly BlogDbContext _context;
+        private readonly Slugger _slugger;
 
-        public PostController(BlogDbContext context)
+        public PostController(BlogDbContext context, Slugger slugger)
         {
             _context = context;
+            _slugger = slugger;
         }
 
         // GET: Post
@@ -47,6 +50,22 @@ namespace pspbe.Controllers
             return View(post);
         }
 
+        // GET: Post/human-readable-name
+        [Route("Post/{slug}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Show(string slug)
+        {
+            var post = await _context.Posts
+                .Include(p => p.Category)
+                .FirstOrDefaultAsync(m => m.Slug == slug);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", post);
+        }
+
         // GET: Post/Create
         public IActionResult Create()
         {
@@ -65,6 +84,8 @@ namespace pspbe.Controllers
             post.Updated = DateTime.Now;
             if (ModelState.IsValid)
             {
+                
+                post.Slug = _slugger.Sluggify(post.Title);
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -107,6 +128,8 @@ namespace pspbe.Controllers
             {
                 return NotFound();
             }
+            
+            oldPost.Slug = _slugger.Sluggify(post.Title);
             oldPost.Updated = DateTime.Now;
             oldPost.CategoryId = post.CategoryId;
             oldPost.Title = post.Title;

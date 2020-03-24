@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using pspbe.Data;
 using pspbe.Models;
+using pspbe.Service;
 
 namespace pspbe.Controllers
 {
@@ -15,10 +16,12 @@ namespace pspbe.Controllers
     public class CategoryController : Controller
     {
         private readonly BlogDbContext _context;
+        private readonly Slugger _slugger;
 
-        public CategoryController(BlogDbContext context)
+        public CategoryController(BlogDbContext context, Slugger slugger)
         {
             _context = context;
+            _slugger = slugger;
         }
 
         // GET: Category
@@ -45,6 +48,22 @@ namespace pspbe.Controllers
             return View(category);
         }
 
+        // GET: Category/human-readable-name
+        [Route("Category/{slug}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Show(string slug)
+        {
+            var category = await _context.Categories
+                .FirstOrDefaultAsync(m => m.Slug == slug);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details", category);
+        }
+
         // GET: Category/Create
         public IActionResult Create()
         {
@@ -62,6 +81,7 @@ namespace pspbe.Controllers
             category.Updated = DateTime.Now;
             if (ModelState.IsValid)
             {
+                category.Slug = _slugger.Sluggify(category.Title);
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -104,6 +124,7 @@ namespace pspbe.Controllers
             }
             oldCategory.Updated = DateTime.Now;
             oldCategory.Title = category.Title;
+            oldCategory.Slug = _slugger.Sluggify(category.Title);
 
             if (ModelState.IsValid)
             {
