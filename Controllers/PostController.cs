@@ -63,7 +63,7 @@ namespace pspbe.Controllers
                 return NotFound();
             }
 
-            return View("Details", post);
+            return View("PublicDetails", post);
         }
 
         // GET: Post/Create

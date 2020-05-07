@@ -10,6 +10,14 @@ Develop front page
 
 Wysiwyg-editor for post editing
 
+## 2020-05-07
+
+View for publicly accessible post page #24
+
+## 2020-03-22
+
+Documentation on initial deployment
+
 ## 2020-03-15
 
 Make views be able to render HTML in post content #13

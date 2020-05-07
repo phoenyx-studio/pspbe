@@ -48,6 +48,7 @@ namespace pspbe.Service
                 .Replace("(", "-")
                 .Replace(")", "-")
                 .Replace("\"", "")
+                .Replace("!", "")
                 .Replace("'", "");
             return Regex.Replace(replaced, @"-{1,}", "-");
         }
