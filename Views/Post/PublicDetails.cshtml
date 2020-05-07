@@ -1,0 +1,10 @@
+@model pspbe.Models.Post
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+<h1>@Model.Title</h1>
+<hr>
+<p class="text-secondary">@Html.DisplayFor(model => model.Created)<br></p>
+<div>@Html.Raw(@Model.Content)</div>
+<p class="text-secondary">Category: @Html.DisplayFor(model => model.Category.Title)</p>
