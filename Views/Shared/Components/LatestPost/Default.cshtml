@@ -1,0 +1,9 @@
+@model pspbe.Models.Post
+
+<div class="post">
+    <h2>@Model.Title</h2>
+    <div class="subtitle">@Model.Updated</div>
+    <div class="post-content">
+        @Html.Raw(Model.Content)
+    </div>
+</div>
