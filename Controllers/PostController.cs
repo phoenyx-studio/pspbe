@@ -51,7 +51,7 @@ namespace pspbe.Controllers
         }
 
         // GET: Post/human-readable-name
-        [Route("Post/{slug}")]
+        [Route("Post/{slug}", Order = 2)]
         [AllowAnonymous]
         public async Task<IActionResult> Show(string slug)
         {

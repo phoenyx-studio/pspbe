@@ -10,7 +10,7 @@ namespace pspbe.Service
                 .ToLower()
                 .Replace("а", "a")
                 .Replace("б", "b")
-                .Replace("б", "v")
+                .Replace("в", "v")
                 .Replace("г", "g")
                 .Replace("д", "d")
                 .Replace("е", "e")
@@ -50,7 +50,7 @@ namespace pspbe.Service
                 .Replace("\"", "")
                 .Replace("!", "")
                 .Replace("'", "");
-            return Regex.Replace(replaced, @"-{1,}", "-");
+            return Regex.Replace(replaced, @"-{1,}", "-").Trim('-');
         }
     }
 }

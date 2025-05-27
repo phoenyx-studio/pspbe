@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
+﻿using Microsoft.EntityFrameworkCore;
 using pspbe.Models;
 
 namespace pspbe.Data
@@ -17,5 +12,4 @@ namespace pspbe.Data
         public virtual DbSet<Category> Categories {get; set;}
         public virtual DbSet<Post> Posts {get; set;}
     }
-    
 }
