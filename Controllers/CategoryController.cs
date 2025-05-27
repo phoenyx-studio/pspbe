@@ -49,7 +49,7 @@ namespace pspbe.Controllers
         }
 
         // GET: Category/human-readable-name
-        [Route("Category/{slug}")]
+        [Route("Category/{slug}", Order = 2)]
         [AllowAnonymous]
         public async Task<IActionResult> Show(string slug)
         {

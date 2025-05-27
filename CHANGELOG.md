@@ -10,6 +10,12 @@ Develop front page
 
 Wysiwyg-editor for post editing
 
+## 2025-05-27
+
+Upgraded to the .NET version 8.x
+
+Fixed routing problems
+
 ## 2020-05-07
 
 View for publicly accessible post page #24
